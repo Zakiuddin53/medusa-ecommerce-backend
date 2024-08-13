@@ -111,18 +111,12 @@ const projectConfig = {
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
-const PORT = process.env.PORT || 9000;
-
 module.exports = {
   projectConfig,
   plugins,
   modules,
   serverConfig: {
-    port: PORT,
     host: "0.0.0.0",
-    cors: {
-      origin: STORE_CORS.split(","),
-      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    },
+    port: process.env.PORT || 9000,
   },
 };
