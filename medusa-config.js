@@ -55,6 +55,7 @@ const plugins = [
   {
     resolve: `medusa-plugin-algolia`,
     options: {
+      serve: process.env.NODE_ENV === "development",
       applicationId: process.env.ALGOLIA_APP_ID,
       adminApiKey: process.env.ALGOLIA_ADMIN_API_KEY,
       settings: {
