@@ -55,7 +55,6 @@ const plugins = [
   {
     resolve: `medusa-plugin-algolia`,
     options: {
-      serve: process.env.NODE_ENV === "development",
       applicationId: process.env.ALGOLIA_APP_ID,
       adminApiKey: process.env.ALGOLIA_ADMIN_API_KEY,
       settings: {
@@ -75,6 +74,21 @@ const plugins = [
               "collection_handle",
               "images",
             ],
+          },
+          transformer: (item) => {
+            return {
+              objectID: item.id,
+              title: item.title,
+              handle: item.handle,
+              thumbnail: item.thumbnail,
+              subtitle: item.subtitle,
+              tags: item.tags,
+              description: item.description,
+              material: item.material,
+              metadata: item.metadata,
+              collection_title: item.collection ? item.collection.title : "",
+              collection_handle: item.collection ? item.collection.handle : "",
+            };
           },
         },
       },
