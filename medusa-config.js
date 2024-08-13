@@ -83,6 +83,7 @@ const plugins = [
 ];
 
 const modules = {
+  // Uncomment if you want to use Redis
   /*eventBus: {
     resolve: "@medusajs/event-bus-redis",
     options: {
@@ -99,12 +100,13 @@ const modules = {
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
-  jwt_secret: process.env.JWT_SECRET || "supersecret",
-  cookie_secret: process.env.COOKIE_SECRET || "supersecret",
+  jwt_secret: process.env.JWT_SECRET,
+  cookie_secret: process.env.COOKIE_SECRET,
   store_cors: STORE_CORS,
-  database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
-  // Uncomment the following lines to enable REDIS
+  database_url: DATABASE_URL,
+  database_type: "postgres",
+  // Uncomment the following line to enable REDIS
   // redis_url: REDIS_URL
 };
 
@@ -113,4 +115,8 @@ module.exports = {
   projectConfig,
   plugins,
   modules,
+  serverConfig: {
+    host: "0.0.0.0",
+    port: process.env.PORT || 9000,
+  },
 };
