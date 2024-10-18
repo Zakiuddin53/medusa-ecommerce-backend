@@ -47,7 +47,7 @@ const plugins = [
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
-      backend_url: "http://api.nacaram.com/,
+      backend_url : "http://api.nacaram.com"
     },
   },
   {
