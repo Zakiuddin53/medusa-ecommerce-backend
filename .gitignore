@@ -23,3 +23,6 @@ build
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+debug.log
+docker-compose.yaml
